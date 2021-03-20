@@ -1,30 +1,21 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    {{msg}}
   </div>
-  <router-view/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+<script lang="ts">
+import {ref} from 'vue'
+export default {
+  //新的API,可以将vue2中的data,methods,computed,watch以及生命周期函数写在里面。
+  //该方法的返回值如果返回的是一个对象,那么对象中的属性就会被暴露到模板中,可以在HTML模板中直接使用
+  //该方法的执行时机比生命周期函数created还要早,也就是说该方法执行时还没有创建实例对象,this的值是undefined
+  setup(){
+    const msg = ref('hello vue3')
+    return {
+      msg
     }
   }
 }
-</style>
+</script>
+
